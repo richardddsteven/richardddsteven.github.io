@@ -33,17 +33,21 @@ let deferredPrompt;
 window.addEventListener("beforeinstallprompt", (event) => {
   event.preventDefault();
   deferredPrompt = event;
-  installButton.style.display = "inline-block";
+  
+  // Tambahkan class "show" agar tombol muncul
+  installButton.classList.add("show");
 
   installButton.addEventListener("click", () => {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === "accepted") {
-        console.log("User accepted the install prompt");
-      } else {
-        console.log("User dismissed the install prompt");
-      }
-      deferredPrompt = null;
-    });
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === "accepted") {
+              console.log("User accepted the install prompt");
+          } else {
+              console.log("User dismissed the install prompt");
+          }
+          deferredPrompt = null;
+          installButton.classList.remove("show"); // Sembunyikan setelah diklik
+      });
   });
 });
+
