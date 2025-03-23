@@ -86,6 +86,23 @@ body, html {
   .start-over button:hover {
     background-color: #ff7f16;
   }
+
+  .install button {
+    background-color: #5100bb;
+    border: 1px solid #5100bb;
+    -webkit-box-shadow: 2px 2px 2px #ccc;
+    -moz-box-shadow: 2px 2px 2px #ccc;
+    box-shadow: 2px 2px 2px #ccc;
+    padding: 5px;
+    color: white;
+    opacity: 0;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .install button:hover {
+    background-color: #ff7f16;
+  }
   
   @keyframes fade-slide {
     0% {
