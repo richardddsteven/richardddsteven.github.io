@@ -26,6 +26,8 @@ function animate() {
   setTimeout(() => installButton.classList.add("animate-in"), 15000);
 }
 
+animate();
+
 button.addEventListener("click", animate);
 window.addEventListener("beforeinstallprompt", (event) => {
   event.preventDefault(); // Mencegah prompt otomatis muncul
@@ -46,6 +48,5 @@ window.addEventListener("beforeinstallprompt", (event) => {
   });
 });
 
-animate();
 
 
