@@ -11,6 +11,7 @@ function animate() {
   title.classList.remove("animate-in");
   courseFeatureElements.forEach((element) => element.classList.remove("animate-in"));
   button.classList.remove("animate-in");
+  installButton.classList.remove("animate-in");
 
   setTimeout(() => title.classList.add("animate-in"), 1000);
   setTimeout(() => courseFeatureElements[0].classList.add("animate-in"), 3000);
@@ -21,6 +22,7 @@ function animate() {
   setTimeout(() => courseFeatureElements[5].classList.add("animate-in"), 10500);
   setTimeout(() => courseFeatureElements[6].classList.add("animate-in"), 12000);
   setTimeout(() => button.classList.add("animate-in"), 13500);
+  setTimeout(() => installButton.classList.add("animate-in"), 15000);
 }
 
 animate();
@@ -29,7 +31,6 @@ button.addEventListener("click", animate);
 
 // Handling install prompt
 let deferredPrompt;
-
 window.addEventListener("beforeinstallprompt", (event) => {
   event.preventDefault();
   deferredPrompt = event;
