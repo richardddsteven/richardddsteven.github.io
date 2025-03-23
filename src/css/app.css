@@ -87,7 +87,7 @@ body, html {
     background-color: #ff7f16;
   }
 
-  #install button {
+  .install-button button {
     background-color: #5100bb;
     border: 1px solid #5100bb;
     -webkit-box-shadow: 2px 2px 2px #ccc;
@@ -100,7 +100,7 @@ body, html {
     outline: none;
   }
   
-  #install button:hover {
+  .install-button button:hover {
     background-color: #5100bb;
   }
   
