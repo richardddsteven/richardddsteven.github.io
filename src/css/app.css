@@ -24,7 +24,8 @@ body, html {
     opacity: 0;
   }
   
-  .content, .start-over {
+  .content, .start-over, .tekan {
+    text-align: center;
     margin: 5px auto;
     text-align: center;
     width: 80%;
@@ -87,7 +88,7 @@ body, html {
     background-color: #ff7f16;
   }
 
-  .install-button button {
+  .tekan button {
     background-color: #5100bb;
     border: 1px solid #5100bb;
     -webkit-box-shadow: 2px 2px 2px #ccc;
@@ -100,7 +101,7 @@ body, html {
     outline: none;
   }
   
-  .install-button button:hover {
+  .tekan button:hover {
     background-color: #5100bb;
   }
   
