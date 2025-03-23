@@ -4,14 +4,10 @@ var startButton = document.getElementById("start-again-btn");
 var installButton = document.getElementById("install-btn");
 var deferredPrompt; // Menyimpan event "beforeinstallprompt"
 
-// Mendaftarkan Service Worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register("/sw.js").then(() => {
-    console.log("Service Worker registered!");
-  });
-}
+navigator.serviceWorker.register("/sw.js").then(() => {
+  console.log("Service Worker registered!");
+});
 
-// Fungsi untuk animasi elemen secara berurutan
 function animate() {
   title.classList.remove("animate-in");
   courseFeatureElements.forEach((element) => element.classList.remove("animate-in"));
@@ -30,10 +26,7 @@ function animate() {
   setTimeout(() => installButton.classList.add("animate-in"), 15000);
 }
 
-// Event listener untuk tombol "Start Again!"
-startButton.addEventListener("click", animate);
-
-// Menangkap event "beforeinstallprompt" agar tombol Install bisa muncul
+button.addEventListener("click", animate);
 window.addEventListener("beforeinstallprompt", (event) => {
   event.preventDefault(); // Mencegah prompt otomatis muncul
   deferredPrompt = event; // Simpan event
@@ -53,5 +46,6 @@ window.addEventListener("beforeinstallprompt", (event) => {
   });
 });
 
-// Jalankan animasi saat halaman dimuat
 animate();
+
+
