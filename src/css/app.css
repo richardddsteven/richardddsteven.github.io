@@ -24,8 +24,7 @@ body, html {
     opacity: 0;
   }
   
-  .content, .start-over, .tekan {
-    text-align: center;
+  .content, .start-over {
     margin: 5px auto;
     text-align: center;
     width: 80%;
@@ -88,22 +87,20 @@ body, html {
     background-color: #ff7f16;
   }
 
-  .tekan button {
-    background-color: #5100bb;
-    border: 1px solid #5100bb;
-    -webkit-box-shadow: 2px 2px 2px #ccc;
-    -moz-box-shadow: 2px 2px 2px #ccc;
-    box-shadow: 2px 2px 2px #ccc;
+  #install-btn {
+    background-color: #28a745;
+    border: 1px solid #28a745;
     padding: 5px;
     color: white;
-    opacity: 0;
     cursor: pointer;
     outline: none;
+    margin-left: 10px;
   }
   
-  .tekan button:hover {
-    background-color: #5100bb;
+  #install-btn:hover {
+    background-color: #218838;
   }
+  
   
   @keyframes fade-slide {
     0% {
