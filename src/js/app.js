@@ -47,12 +47,19 @@ installButton.addEventListener("click", () => {
         deferredPrompt.userChoice.then((choiceResult) => {
             if (choiceResult.outcome === "accepted") {
                 console.log("User accepted the install prompt");
+                installButton.style.display = "none"; // Sembunyikan tombol Install setelah instalasi
             } else {
                 console.log("User dismissed the install prompt");
             }
             deferredPrompt = null;
         });
     }
+});
+
+// Event listener untuk mendeteksi jika aplikasi sudah diinstal
+window.addEventListener("appinstalled", () => {
+    console.log("PWA telah diinstal");
+    installButton.style.display = "none"; // Sembunyikan tombol Install
 });
 
 // Panggil fungsi animasi pertama kali
