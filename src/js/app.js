@@ -1,16 +1,21 @@
 var title = document.querySelector(".title");
 var courseFeatureElements = document.querySelectorAll(".course-feature");
-var button = document.querySelector(".start-over button");
+var startButton = document.getElementById("start-again-btn");
 var installButton = document.getElementById("install-btn");
+var deferredPrompt; // Menyimpan event "beforeinstallprompt"
 
-navigator.serviceWorker.register("/sw.js").then(() => {
-  console.log("Service Worker registered!");
-});
+// Mendaftarkan Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register("/sw.js").then(() => {
+    console.log("Service Worker registered!");
+  });
+}
 
+// Fungsi untuk animasi elemen secara berurutan
 function animate() {
   title.classList.remove("animate-in");
   courseFeatureElements.forEach((element) => element.classList.remove("animate-in"));
-  button.classList.remove("animate-in");
+  startButton.classList.remove("animate-in");
   installButton.classList.remove("animate-in");
 
   setTimeout(() => title.classList.add("animate-in"), 1000);
@@ -21,34 +26,32 @@ function animate() {
   setTimeout(() => courseFeatureElements[4].classList.add("animate-in"), 9000);
   setTimeout(() => courseFeatureElements[5].classList.add("animate-in"), 10500);
   setTimeout(() => courseFeatureElements[6].classList.add("animate-in"), 12000);
-  setTimeout(() => button.classList.add("animate-in"), 13500);
+  setTimeout(() => startButton.classList.add("animate-in"), 13500);
   setTimeout(() => installButton.classList.add("animate-in"), 15000);
 }
 
-animate();
+// Event listener untuk tombol "Start Again!"
+startButton.addEventListener("click", animate);
 
-button.addEventListener("click", animate);
-
-// Handling install prompt
-let deferredPrompt;
+// Menangkap event "beforeinstallprompt" agar tombol Install bisa muncul
 window.addEventListener("beforeinstallprompt", (event) => {
-  event.preventDefault();
-  deferredPrompt = event;
-  
-  // Tambahkan class "show" agar tombol muncul
-  installButton.classList.add("show");
+  event.preventDefault(); // Mencegah prompt otomatis muncul
+  deferredPrompt = event; // Simpan event
+  installButton.style.display = "inline-block"; // Tampilkan tombol Install
 
   installButton.addEventListener("click", () => {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === "accepted") {
-              console.log("User accepted the install prompt");
-          } else {
-              console.log("User dismissed the install prompt");
-          }
-          deferredPrompt = null;
-          installButton.classList.remove("show"); // Sembunyikan setelah diklik
-      });
+    deferredPrompt.prompt(); // Tampilkan prompt install
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === "accepted") {
+        console.log("User accepted the install prompt");
+      } else {
+        console.log("User dismissed the install prompt");
+      }
+      deferredPrompt = null; // Reset event setelah digunakan
+      installButton.style.display = "none"; // Sembunyikan tombol setelah dipakai
+    });
   });
 });
 
+// Jalankan animasi saat halaman dimuat
+animate();

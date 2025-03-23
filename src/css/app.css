@@ -101,6 +101,25 @@ body, html {
   #install-btn.show {
     display: inline-block;
   }
+
+  #install-btn {
+    background-color: #28a745; /* Warna hijau */
+    border: 1px solid #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px; /* Beri jarak dari tombol Start Again */
+  }
+  
+  #install-btn:hover {
+    background-color: #218838; /* Warna hijau lebih gelap saat hover */
+  }
+  
+  #install-btn.hidden {
+    display: none;
+  }
   
   
   @keyframes fade-slide {
