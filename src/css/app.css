@@ -87,7 +87,7 @@ body, html {
     background-color: #ff7f16;
   }
 
-  .install button {
+  #install button {
     background-color: #5100bb;
     border: 1px solid #5100bb;
     -webkit-box-shadow: 2px 2px 2px #ccc;
@@ -100,8 +100,8 @@ body, html {
     outline: none;
   }
   
-  .install button:hover {
-    background-color: #ff7f16;
+  #install button:hover {
+    background-color: #5100bb;
   }
   
   @keyframes fade-slide {
