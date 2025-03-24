@@ -40,10 +40,9 @@ self.addEventListener('fetch', function(event) {
       caches.match(event.request)
         .then(function(response) {
           if (response) {
-            return response; // Jika ada di cache, gunakan
+            return response;
           }
   
-          // ❌ Jika offline dan halaman tidak ada di cache, langsung arahkan ke offline.html
           if (!navigator.onLine) {
             return caches.open(CACHE_STATIC_NAME)
               .then(function(cache) {
@@ -51,7 +50,6 @@ self.addEventListener('fetch', function(event) {
               });
           }
   
-          // ✅ Jika online, ambil dari jaringan dan cache hasilnya
           return fetch(event.request)
             .then(function(res) {
               return caches.open(CACHE_DYNAMIC_NAME)
